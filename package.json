@@ -1,0 +1,28 @@
+{
+  "name": "simple-horizontal-scroll",
+  "version": "1.0.0",
+  "description": "horizontal-scroll is a lightweight script which enables you to change the default scroll direction either for a single section or for a whole page",
+  "main": "horizontal-scroll.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entrpyc/horizontal-scroll.git"
+  },
+  "keywords": [
+    "horizontal",
+    "scroll",
+    "horizontal",
+    "section",
+    "horizontal",
+    "direction",
+    "horizontal"
+  ],
+  "author": "entrpyc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/entrpyc/horizontal-scroll/issues"
+  },
+  "homepage": "https://github.com/entrpyc/horizontal-scroll#readme"
+}
