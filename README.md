@@ -58,7 +58,7 @@ If you wan to use padding add this style to your css to fill right-side gap
 
 ## Example
 
-View the example [here]: https://a-angelov.eu/packages/scroll-horizontal/
+View the example [here]:https://a-angelov.eu/packages/scroll-horizontal/
 
 ## Info
 
