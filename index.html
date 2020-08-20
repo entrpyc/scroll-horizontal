@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+    <section>
+      <p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p>
+    </section>
+    <section class="section-horizontal-scroll">
+      <div class="scroll-wrapper">
+        <div class="section-container">
+          <div class="line">
+            <div class="block" style="background: #ff0033"></div>
+            <div class="block" style="background: #ff3366"></div>
+            <div class="block" style="background: #ff6699"></div>
+            <div class="block" style="background: #ff99cc"></div>
+            <div class="block" style="background: #ffccff"></div>
+            <div class="block" style="background: #ccccff"></div>
+            <div class="block" style="background: #99ccff"></div>
+            <div class="block" style="background: #66ccff"></div>
+            <div class="block" style="background: #33ccff"></div>
+            <div class="block" style="background: #00ccff"></div>
+            <div class="block" style="background: #0099ff"></div>
+            <div class="block" style="background: #0066ff"></div>
+            <div class="mask"></div>
+          </div>
+        </div>
+        <div class="set-height"></div>
+      </div>
+  </section>
+  <section class="document-end">
+    <p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p>
+  </section>
+
+    <script src="public/scroll-horizontal.js"></script>
+    <script>
+      let aboutUsSection = new HorizontalSection({     
+        settings: {
+          offsetScroll: 500, // scroll offset (in pixels) when entering and leaving the section (500 recommended)
+          disableBefore: 768, // will not run on screeens below 1024px width
+          // disableAfter: 1024, // will not run on screeens above 1024px width
+          // offsetPercent: 20  // integer - same as offsetScroll, but uses viewport width instead of pixels
+        }
+      }).init()
+    </script>
+  </body>
+</html>

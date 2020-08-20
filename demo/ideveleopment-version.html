@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+    <section>
+      <p>adlaskd;lsak'd;laskl';</p>
+      <p>adlaskd;lsak'd;laskl';</p>
+      <p>adlaskd;lsak'd;laskl';</p>
+      <p>adlaskd;lsak'd;laskl';</p>
+      <p>adlaskd;lsak'd;laskl';</p>
+      <p>adlaskd;lsak'd;laskl';</p>
+      <p>adlaskd;lsak'd;laskl';</p>
+    </section>
+    <section class="horizontal-section-of-pain-and-sorrow">
+      <div class="stick-wrapper">
+        <div class="stick-section">
+          <div class="line">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="mask"></div>
+          </div>
+        </div>
+        <div class="set-height"></div>
+      </div>
+  </section>
+  <section>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+    <p>adlaskd;lsak'd;laskl';</p>
+  </section>
+
+    <script src="public/scroll-horizontal.js"></script>
+    <script>
+      let aboutUsSection = new HorizontalSection({
+        selector: '.horizontal-section-of-pain-and-sorrow',
+        wrapper: '.stick-wrapper',
+        sectionContainer: '.stick-section',
+        pseudoHeight: '.set-height',
+        
+        settings: {
+          disableBefore: 768, // do not run on mobile
+          disableAfter: 1024, // do not run on desktop
+          offsetScroll: 900,
+          offsetPercent: 20
+        }
+      }).init()
+    </script>
+  </body>
+</html>

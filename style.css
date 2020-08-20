@@ -1,0 +1,42 @@
+body {
+  background: #000;
+  color: #fff;
+  font-size: 19px;
+}
+section p {
+  max-width: 55vw;
+  font-size: 20px;
+  margin-left: 120px;
+  margin-top: 120px;
+  font-family: 'Garamond', sans-serif;
+  letter-spacing: 0.1px;
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+.document-end {
+  padding-bottom: 120px;
+}
+.line {
+  height: calc(100vh - 240px);
+  padding: 120px;
+  display: flex;
+  align-items: center;
+}
+.block {
+  opacity: 0.9;
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+  box-shadow: 12px 12px 0px -3px rgba(255, 255, 255, 0.4);
+}
+.block + .block {
+  margin-left: 50px
+}
+.line::after {
+  content: '';
+  display: block;
+  width: 120px; /* padding */
+  height: 1px;
+  flex-shrink: 0;
+}

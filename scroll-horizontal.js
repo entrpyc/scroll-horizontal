@@ -1,136 +1,161 @@
-/* eslint-disable */
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
 function HorizontalSection(options) {
-  this.selector = options.selector;
-  this.sectionContainer = options.sectionContainer;
-  this.pseudoHeight = options.pseudoHeight;
-  this.settings = options.settings;
-  this.init = init;
+
+  this.selector = options.selector ? options.selector : '.section-horizontal-scroll'
+  this.wrapper = options.wrapper ? options.wrapper : '.scroll-wrapper',
+  this.sectionContainer = options.sectionContainer ? options.sectionContainer : '.section-container'
+  this.pseudoHeight = options.pseudoHeight ? options.pseudoHeight : false
+  this.settings = options.settings
+
+  this.init = init
 }
 
 function init() {
-  var _this = this;
 
-  var options = this.settings;
-  var hardOffset = options.hardOffset;
-  var offsetPercent = options.offsetPercent;
-  $(window).on('load', function () {
-    if ($(window).width() > 768) {
-      //get scrollbar width
-      $.scrollbarWidth = function () {
-        var parent, child, width; //skip if already calculated
+  const options = this.settings
+  const offsetScroll = options.offsetScroll
+  const offsetPercent = options.offsetPercent
+  const disableAfter =  options.disableAfter ? window.innerWidth < options.disableAfter : true
+  const disableBefore = options.disableBefore ? window.innerWidth > options.disableBefore : true
 
-        if (width === undefined) {
-          //create element with scrollbar
-          parent = $('<div style="width:50px;height:50px;overflow:auto"><div/></div>').appendTo('body'); //substract child inner from container
-
-          child = parent.children();
-          width = child.innerWidth() - child.height(99).innerWidth(); //reset html
-
-          parent.remove();
-        }
-
-        return width;
-      }; // var dynamicOffset = 20 //set in percent
-
-
-      var realOffset = offsetPercent ? convertDynamicOffset(offsetPercent) : hardOffset; // convertDynamicOffset(dynamicOffset) // hardcode in pixels (minimum reccommended: 100)
-
-      var selectorInner = $(_this.selector);
-      var sectionContainer = $(_this.sectionContainer);
-      var pseudoHeight = $(_this.pseudoHeight);
-      $.each(selectorInner, function (i, element) {
+  document.getElementsByTagName('body')[0].style.margin = '0'
+  
+  window.onload = () => {
+    if (disableAfter && disableBefore) {  
+      // var dynamicOffset = 20 //set in percent
+      
+      let realOffset = offsetPercent ? convertDynamicOffset(offsetPercent) : offsetScroll
+      
+      // convertDynamicOffset(dynamicOffset) // hardcode in pixels (minimum reccommended: 100)
+      
+      const selectorInner = document.querySelectorAll(this.selector)
+      
+      
+      selectorInner.forEach((element) => {
         //set properties
-        var container = $(element).find(sectionContainer)[0];
-        var sectionHeight = $(element).find(pseudoHeight)[0];
-        var containerWidth = $(container)[0].scrollWidth;
-        var barWidth = $.scrollbarWidth();
+        var container = element.querySelector(this.sectionContainer)
+        var containerWidth = container.scrollWidth
+        var sectionHeight = this.pseudoHeight ? element.querySelector(this.pseudoHeight) : element.querySelector(createPseudoHeight(element, this.wrapper)) 
+        var barWidth = scrollbarWidth()
+        
+        element.style.overflowX = 'hidden'
+        element.style.position = 'relative'
+        element.querySelector(this.wrapper).style.position = 'relative'
 
         if (containerWidth > window.innerWidth - barWidth) {
-          setTimeout(function () {
-            var boundingContainer = $(container)[0].scrollHeight;
-            $(sectionHeight).css('height', containerWidth - (window.innerWidth - barWidth) + boundingContainer + realOffset * 2);
+          setTimeout(function() {
+            var boundingContainer = container.scrollHeight
+            sectionHeight.style.height = ((containerWidth - (window.innerWidth - barWidth)) + boundingContainer) + (realOffset * 2) + 'px'
           }, 5);
-          setBounds(container, '100vw', '100vh'); //handle scroll
+          setBounds(container, '100vw', '100vh')
 
-          $(window).on('scroll', function () {
-            if ($(document).scrollTop() >= $(element).offset().top && $(document).scrollTop() <= $(element).offset().top + containerWidth - (window.innerWidth - barWidth) + realOffset * 2) {
-              container.scrollLeft = $(document).scrollTop() - $(element).offset().top - realOffset;
-              playClass(container, 'play');
-            } else if ($(document).scrollTop() < $(element).offset().top) {
-              container.scrollLeft = 0;
-              playClass(container, 'wait');
-            } else if ($(document).scrollTop() > $(element).offset().top + containerWidth - (window.innerWidth - barWidth)) {
-              container.scrollLeft = containerWidth;
-              playClass(container, 'rest');
+          const documentBody = document.getElementsByTagName('body')
+  
+          //handle scroll
+          window.addEventListener('scroll', function() {
+            if (documentScrollTop() >= element.offsetTop &&
+              documentScrollTop() <= ((element.offsetTop + containerWidth) - (window.innerWidth - barWidth)) + (realOffset * 2)) {
+              container.scrollLeft = (documentScrollTop() - element.offsetTop) - realOffset
+              playClass(container, 'play')
+            } else if (documentScrollTop() < element.offsetTop) {
+              container.scrollLeft = 0
+              playClass(container, 'wait')
+            } else if (documentScrollTop() > (element.offsetTop + containerWidth) - (window.innerWidth - barWidth)) {
+              container.scrollLeft = containerWidth
+              playClass(container, 'rest')
             }
-          });
+          })
         }
-      });
+      })
     }
-  });
-} //set section size
+  }
+}
 
+function documentScrollTop() {
+  var supportPageOffset = window.pageXOffset !== undefined;
+  var isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat');
 
+  return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+}
+
+//set section size
 function setBounds(el, w, h) {
   //use scrollbar width to set accurate bounds
-  var scrollBWidth = $.scrollbarWidth();
-  var thisWidth = "calc(".concat(w, " - ").concat(scrollBWidth, "px)");
-  var thisHeight = h;
+  var scrollBWidth = scrollbarWidth()
+  var thisWidth = `calc(${w} - ${scrollBWidth}px)`
+  var thisHeight = h
 
-  if ($(el)[0].scrollWidth < window.innerWidth - scrollBWidth) {
-    $(el).css({
-      'width': 'auto',
-      'height': thisHeight,
-      'overflow': 'hidden'
-    });
+  if (el.scrollWidth < (window.innerWidth - scrollBWidth)) {
+    el.style.width = 'auto'
+    el.style.height = thisHeight
+    el.style.overflow = 'hidden'
   } else {
-    $(el).css({
-      'width': thisWidth,
-      'height': thisHeight,
-      'overflow': 'hidden'
-    });
+    el.style.width = thisWidth
+    el.style.height = thisHeight
+    el.style.overflow = 'hidden'
   }
-} //apply css to container depending on scroll position
 
+}
 
+function styleApply(el, position, top, left, bottom) {
+  el.style.position = position
+  el.style.top = top
+  el.style.left = left
+  el.style.bottom = bottom
+}
+
+//apply css to container depending on scroll position
 function playClass(el, status) {
   if (status == 'play') {
-    $(el).css({
-      'position': 'fixed',
-      'top': '0',
-      'left': '0',
-      'bottom': 'auto'
-    });
+    styleApply(el, 'fixed', '0', '0', 'auto')
   } else if (status == 'wait') {
-    $(el).css({
-      'position': 'absolute',
-      'top': '0',
-      'left': '0',
-      'bottom': 'auto'
-    });
+    styleApply(el, 'absolute', '0', '0', 'auto')
   } else if (status == 'rest') {
-    $(el).css({
-      'position': 'absolute',
-      'top': 'auto',
-      'left': '0',
-      'bottom': '0'
-    });
+    styleApply(el, 'absolute', 'auto', '0', '0')
   }
+}
+
+function createPseudoHeight(main, wrapper) {
+  let node = document.createElement('div')
+  node.className = 'pseudoHeight'
+  main.querySelector(wrapper).appendChild(node)
+
+  console.log(node)
+
+  return '.pseudoHeight'
 }
 
 function convertDynamicOffset(dOffset) {
-  var scrollBWidth = $.scrollbarWidth();
-  var winWidth = window.innerWidth - scrollBWidth;
-  var pxOffset = parseInt(winWidth * (dOffset / 100));
-  return pxOffset;
+  var scrollBWidth = scrollbarWidth()
+  var winWidth = window.innerWidth - scrollBWidth
+
+  var pxOffset = parseInt(winWidth * (dOffset / 100))
+
+  return pxOffset
 }
 
-var _default = HorizontalSection;
-exports["default"] = _default;
+//get scrollbar width
+function scrollbarWidth() {
+  var scrollbarWidth, width;
+
+  //skip if already calculated
+  if (width === undefined) {
+    // Creating invisible container
+    const outer = document.createElement('div');
+    outer.style.visibility = 'hidden';
+    outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+    outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+    document.body.appendChild(outer);
+
+    // Creating inner element and placing it in the container
+    const inner = document.createElement('div');
+    outer.appendChild(inner);
+
+    // Calculating difference between container's full width and the child width
+    scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+
+    // Removing temporary elements from the DOM
+    outer.parentNode.removeChild(outer);
+  }
+
+  return scrollbarWidth;
+}

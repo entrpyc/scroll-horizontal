@@ -4,7 +4,8 @@
   "description": "scroll-horizontal is a lightweight vanilla script that enables you to change the default scroll direction either for a single section or for a whole page",
   "main": "scroll-horizontal.min.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "js": "babel scroll-horizontal.js --out-file public/scroll-horizontal.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/entrpyc/scroll-horizontal/issues"
   },
-  "homepage": "https://github.com/entrpyc/scroll-horizontal#readme"
+  "homepage": "https://github.com/entrpyc/scroll-horizontal#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "babel-loader": "^8.1.0"
+  }
 }
