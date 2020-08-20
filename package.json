@@ -1,6 +1,6 @@
 {
   "name": "scroll-horizontal",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "scroll-horizontal is a lightweight vanilla script that enables you to change the default scroll direction either for a single section or for a whole page",
   "main": "scroll-horizontal.min.js",
   "scripts": {
