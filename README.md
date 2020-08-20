@@ -5,7 +5,7 @@
 
 ## Installation
 
-- `$ npm i detritus-client`
+- `$ npm i scroll-horizontal`
 
 ## Usage
 
@@ -28,4 +28,16 @@ let aboutUsSection = new HorizontalSection({
 
 ## Info
 
-The packet is still in development
+The packet is still in development. However, it supports common browsers and devices including IE 11
+
+## To Do
+
+- [ ] Transpile to vanilla
+- [x] Transpile to ES5
+- [x] Add minified version
+- [ ] Run coverage tests
+- [ ] Add mobile version support
+- [ ] Add styles
+- [ ] Update README
+- [ ] Create webpage
+- [ ] Show examples
