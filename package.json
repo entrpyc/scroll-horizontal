@@ -8,21 +8,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/entrpyc/horizontal-scroll.git"
+    "url": "git+https://github.com/entrpyc/scroll-horizontal"
   },
   "keywords": [
     "scroll",
     "horizontal",
     "section",
     "direction",
-    "rotate",
     "switch",
+    "manipulate",
     "change"
   ],
   "author": "entrpyc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/entrpyc/horizontal-scroll/issues"
+    "url": "https://github.com/entrpyc/scroll-horizontal/issues"
   },
-  "homepage": "https://github.com/entrpyc/horizontal-scroll#readme"
+  "homepage": "https://github.com/entrpyc/scroll-horizontal#readme"
 }

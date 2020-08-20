@@ -28,7 +28,7 @@ let aboutUsSection = new HorizontalSection({
 
 ## Info
 
-The packet is still in development. However, it supports common browsers and devices including IE 11
+The package is still in development. However, it supports common browsers and devices including IE 11
 
 ## To Do
 
