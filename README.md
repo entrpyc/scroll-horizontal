@@ -67,14 +67,14 @@ Current version consists only of minified ES5 javascript file. Visit the repo fo
 
 ### To Do
 
-- [х] Transpile to vanilla
+- [x] Transpile to vanilla
 - [x] Transpile to ES5
 - [x] Add minified version
 - [ ] Run coverage tests
-- [х] Add mobile version support
-- [х] Add styles
+- [x] Add mobile version support
+- [x] Add styles
 - [ ] Update README
-- [х] Create webpage
+- [x] Create webpage
 - [ ] Show examples
 - [ ] Window resize support
 - [ ] Add CDN
