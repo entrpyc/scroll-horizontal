@@ -2,6 +2,7 @@
 
 ![NPM](https://img.shields.io/npm/l/simple-horizontal-scroll)
 
+![](https://i.ibb.co/HttfTDt/ezgif-6-cd3eae5c2918.gif)
 
 ## Installation and Setup
 
