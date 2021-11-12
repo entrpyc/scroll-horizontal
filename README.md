@@ -76,9 +76,5 @@ Current version consists only of minified ES5 javascript file. Visit the repo fo
 - [ ] Run coverage tests
 - [x] Add mobile version support
 - [x] Add styles
-- [ ] Update README
 - [x] Create webpage
-- [ ] Show examples
 - [ ] Window resize support
-- [ ] Add CDN
-- [ ] Add Yarn
