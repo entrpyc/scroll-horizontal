@@ -45,7 +45,7 @@ settings: {
 }
 ```
 
-If you wan to use padding add this style to your css to fill right-side gap
+If you want to use padding add this style to your css to fill right-side gap
 
 ```css
 .line::after {
